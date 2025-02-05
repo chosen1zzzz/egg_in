@@ -1,0 +1,64 @@
+<view class="container">
+  <view class="header">
+    <picker mode="date" value="{{date}}" bindchange="bindDateChange">
+      <view class="date-picker">
+        <text class="date-text">{{date}}</text>
+      </view>
+    </picker>
+  </view>
+
+  <view class="income-card">
+    <view class="income-title">当日总收入</view>
+    <view class="income-amount">¥ {{income}}</view>
+  </view>
+
+  <view class="input-form">
+    <view class="form-title">添加收入</view>
+    <view class="form-item">
+      <text class="input-label">金额</text>
+      <input type="digit" 
+             class="amount-input" 
+             placeholder="请输入金额" 
+             value="{{newAmount}}"
+             bindinput="bindAmountInput"/>
+    </view>
+    <view class="form-item">
+      <text class="input-label">描述</text>
+      <input type="text" 
+             class="desc-input" 
+             placeholder="请输入收入描述（选填）" 
+             value="{{newDescription}}"
+             bindinput="bindDescriptionInput"/>
+    </view>
+    <button class="submit-btn" bindtap="addIncome">添加收入</button>
+  </view>
+
+  <view class="income-list">
+    <view class="list-header">
+      <text class="list-title">收入明细</text>
+      <text class="list-count" wx:if="{{incomeList.length > 0}}">共{{incomeList.length}}笔</text>
+    </view>
+    <scroll-view 
+      scroll-y 
+      class="list-scroll" 
+      wx:if="{{incomeList.length > 0}}"
+      enhanced="{{true}}"
+      show-scrollbar="{{true}}"
+      bounces="{{true}}">
+      <view class="income-item" wx:for="{{incomeList}}" wx:key="time">
+        <view class="item-left">
+          <view class="item-time">{{item.time}}</view>
+          <view class="item-desc">{{item.description}}</view>
+        </view>
+        <view class="item-right">
+          <view class="item-amount">+{{item.amount}}</view>
+          <view class="item-delete" data-index="{{index}}" bindtap="deleteIncome">删除</view>
+        </view>
+      </view>
+    </scroll-view>
+    <view class="empty-tip" wx:else>
+      <image class="empty-icon" src="/assets/icons/empty.png"></image>
+      <text>暂无收入记录</text>
+    </view>
+  </view>
+</view> 

@@ -1,0 +1,242 @@
+.container {
+  padding: 0;
+  background: #fff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  box-sizing: border-box;
+  padding-top: constant(safe-area-inset-top);
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: constant(safe-area-inset-bottom);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.header {
+  padding: 20rpx 0 10rpx;
+  background: #fff;
+  width: 100%;
+  box-sizing: border-box;
+  position: fixed;
+  top: calc(env(safe-area-inset-top) + 20rpx);
+  left: 0;
+  z-index: 100;
+}
+
+.date-picker {
+  background: #fff;
+  padding: 5rpx 40rpx 10rpx;
+  text-align: center;
+  font-size: 32rpx;
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.date-item {
+  background: #f5f5f5;
+  padding: 8rpx 30rpx;
+  border-radius: 30rpx;
+  font-size: 32rpx;
+  color: #333;
+  font-weight: bold;
+  min-width: 240rpx;
+  text-align: center;
+}
+
+.date-text {
+  font-weight: bold;
+}
+
+.date-range {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.date-number {
+  font-size: 32rpx;
+  color: #333;
+  font-weight: bold;
+}
+
+.separator {
+  margin: 0 20rpx;
+  color: #666;
+  font-size: 28rpx;
+}
+
+.month-picker {
+  background: #fff;
+  padding: 20rpx;
+  border-radius: 10rpx;
+  text-align: center;
+  font-size: 32rpx;
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.picker-arrow {
+  width: 0;
+  height: 0;
+  border-left: 10rpx solid transparent;
+  border-right: 10rpx solid transparent;
+  border-top: 10rpx solid #666;
+  margin-left: 10rpx;
+}
+
+.income-card {
+  margin-top: 120rpx;
+  background: linear-gradient(135deg, #1AAD19 0%, #2DC62B 100%);
+  padding: 40rpx 40rpx;
+  color: #fff;
+  box-shadow: 0 4rpx 20rpx rgba(26, 173, 25, 0.2);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.income-title {
+  font-size: 32rpx;
+  opacity: 0.9;
+  margin-bottom: 20rpx;
+}
+
+.income-amount {
+  font-size: 88rpx;
+  font-weight: bold;
+  margin: 0;
+  line-height: 1;
+}
+
+.income-stats {
+  display: flex;
+  padding-top: 20rpx;
+  border-top: 2rpx solid rgba(255, 255, 255, 0.2);
+  margin-top: 30rpx;
+}
+
+.stats-item {
+  flex: 1;
+  text-align: center;
+}
+
+.stats-label {
+  font-size: 26rpx;
+  opacity: 0.8;
+  display: block;
+  margin-bottom: 8rpx;
+}
+
+.stats-value {
+  font-size: 40rpx;
+  font-weight: bold;
+}
+
+.income-list {
+  background: #fff;
+  padding: 20rpx 40rpx 0;
+  margin-top: 0;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10rpx 0 20rpx;
+  border-bottom: 1rpx solid #eee;
+}
+
+.list-title {
+  font-size: 32rpx;
+  color: #333;
+  font-weight: bold;
+}
+
+.list-count {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.list-scroll {
+  flex: 1;
+  height: calc(100vh - 720rpx);
+  min-height: 500rpx;
+  padding-bottom: 100rpx;
+}
+
+.income-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30rpx 0;
+  border-bottom: 1rpx solid #eee;
+  background: #fff;
+  transition: all 0.3s;
+  width: 100%;
+}
+
+.income-item:active {
+  background: #f8f8f8;
+}
+
+.item-left {
+  flex: 1;
+}
+
+.item-date {
+  font-size: 32rpx;
+  color: #333;
+  font-weight: bold;
+}
+
+.item-hint {
+  font-size: 24rpx;
+  color: #999;
+  margin-top: 8rpx;
+}
+
+.item-right {
+  text-align: right;
+}
+
+.item-amount {
+  font-size: 36rpx;
+  color: #1AAD19;
+  font-weight: bold;
+}
+
+.item-count {
+  font-size: 24rpx;
+  color: #999;
+  margin-top: 8rpx;
+}
+
+.empty-tip {
+  text-align: center;
+  color: #999;
+  font-size: 28rpx;
+  padding: 60rpx 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.empty-icon {
+  width: 120rpx;
+  height: 120rpx;
+  margin-bottom: 20rpx;
+  opacity: 0.5;
+} 

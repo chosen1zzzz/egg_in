@@ -1,0 +1,47 @@
+{
+  "pages": [
+    "pages/daily/index",
+    "pages/monthly/index",
+    "pages/yearly/index"
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTitleText": "收入统计",
+    "backgroundColor": "#f8f8f8"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#1AAD19",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/daily/index",
+        "text": "日收入"
+      },
+      {
+        "pagePath": "pages/monthly/index",
+        "text": "月收入"
+      },
+      {
+        "pagePath": "pages/yearly/index",
+        "text": "年收入"
+      }
+    ]
+  },
+  "style": "v2",
+  "renderer": "skyline",
+  "rendererOptions": {
+    "skyline": {
+      "defaultDisplayBlock": true,
+      "defaultContentBox": true,
+      "tagNameStyleIsolation": "legacy",
+      "disableABTest": true,
+      "sdkVersionBegin": "3.0.0",
+      "sdkVersionEnd": "15.255.255"
+    }
+  },
+  "componentFramework": "glass-easel",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}
