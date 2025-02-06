@@ -8,8 +8,6 @@
   box-sizing: border-box;
   padding-top: constant(safe-area-inset-top);
   padding-top: env(safe-area-inset-top);
-  padding-bottom: constant(safe-area-inset-bottom);
-  padding-bottom: env(safe-area-inset-bottom);
 }
 
 .header {
@@ -75,7 +73,7 @@
 
 .input-form {
   background: #fff;
-  padding: 20rpx 40rpx 30rpx;
+  padding: 20rpx 40rpx 10rpx;
   margin-top: 0;
   width: 100%;
   box-sizing: border-box;
@@ -89,7 +87,7 @@
 }
 
 .form-item {
-  margin-bottom: 20rpx;
+  margin-bottom: 15rpx;
 }
 
 .input-label {
@@ -115,7 +113,7 @@
   background: #1AAD19;
   color: #fff;
   border: none;
-  margin: 10rpx auto;
+  margin: 5rpx auto;
   height: 70rpx;
   width: 180rpx;
   display: flex;
@@ -131,21 +129,27 @@
 
 .income-list {
   background: #fff;
-  padding: 20rpx 40rpx;
+  padding: 30rpx 0 0 0;
   margin-top: 0;
   width: 100%;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   flex: 1;
+  position: relative;
+  height: calc(100vh - 280rpx);
 }
 
 .list-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10rpx 0 20rpx;
+  padding: 0 40rpx 20rpx 40rpx;
   border-bottom: 1rpx solid #eee;
+  position: relative;
+  z-index: 2;
+  background: #fff;
+  margin-bottom: 15rpx;
 }
 
 .list-title {
@@ -161,20 +165,26 @@
 
 .list-scroll {
   flex: 1;
-  height: calc(100vh - 720rpx);
-  min-height: 500rpx;
-  padding-bottom: 240rpx;
+  position: absolute;
+  top: 70rpx;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: 1;
 }
 
 .income-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 30rpx 0;
+  padding: 20rpx 40rpx;
   border-bottom: 1rpx solid #eee;
   background: #fff;
   transition: all 0.3s;
   width: 100%;
+  margin-top: 8rpx;
+  box-sizing: border-box;
 }
 
 .income-item:active {
