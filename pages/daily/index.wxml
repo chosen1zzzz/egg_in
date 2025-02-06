@@ -12,25 +12,54 @@
     <view class="income-amount">¥ {{income}}</view>
   </view>
 
-  <view class="input-form">
-    <view class="form-title">添加收入</view>
-    <view class="form-item">
-      <text class="input-label">金额</text>
-      <input type="digit" 
-             class="amount-input" 
-             placeholder="请输入金额" 
-             value="{{newAmount}}"
-             bindinput="bindAmountInput"/>
+  <view class="modal-mask" wx:if="{{showForm}}" bindtap="hideAddIncomeForm">
+    <view class="modal-content" catchtap="stopPropagation">
+      <view class="modal-header">
+        <text class="modal-title">添加收入</text>
+        <view class="modal-close" bindtap="hideAddIncomeForm">×</view>
+      </view>
+      <view class="modal-body">
+        <view class="form-item">
+          <text class="input-label">金额</text>
+          <input type="digit" 
+                class="amount-input" 
+                placeholder="请输入金额" 
+                value="{{newAmount}}"
+                bindinput="bindAmountInput"/>
+        </view>
+        <view class="form-item">
+          <text class="input-label">描述</text>
+          <view class="custom-select">
+            <view class="select-trigger" bindtap="toggleDescriptionSelect">
+              <text wx:if="{{selectedDescriptionIndex === -1}}" class="select-placeholder">请选择描述</text>
+              <text wx:else>{{descriptionOptions[selectedDescriptionIndex]}}</text>
+              <view class="select-arrow"></view>
+            </view>
+            <view class="select-dropdown {{showDescriptionSelect ? 'show' : ''}}">
+              <scroll-view 
+                scroll-y 
+                class="select-options-scroll"
+                enhanced="{{true}}"
+                show-scrollbar="{{false}}"
+                bounces="{{true}}">
+                <view 
+                  wx:for="{{descriptionOptions}}" 
+                  wx:key="*this"
+                  class="select-option {{selectedDescriptionIndex === index ? 'selected' : ''}}" 
+                  data-index="{{index}}"
+                  catchtap="selectDescription">
+                  {{item}}
+                </view>
+              </scroll-view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="modal-footer">
+        <button class="cancel-btn" bindtap="hideAddIncomeForm">取消</button>
+        <button class="submit-btn" bindtap="addIncome">确定</button>
+      </view>
     </view>
-    <view class="form-item">
-      <text class="input-label">描述</text>
-      <input type="text" 
-             class="desc-input" 
-             placeholder="请输入收入描述（选填）" 
-             value="{{newDescription}}"
-             bindinput="bindDescriptionInput"/>
-    </view>
-    <button class="submit-btn" bindtap="addIncome">添加收入</button>
   </view>
 
   <view class="income-list">
@@ -61,4 +90,11 @@
       <text>暂无收入记录</text>
     </view>
   </view>
+
+  <view class="floating-button" 
+        bindtap="showAddIncomeForm"
+        bindtouchstart="buttonTouchStart"
+        bindtouchmove="buttonTouchMove"
+        bindtouchend="buttonTouchEnd"
+        style="left: {{buttonLeft}}px; top: {{buttonTop}}px;"></view>
 </view> 

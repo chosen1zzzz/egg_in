@@ -4,7 +4,36 @@ Page({
     date: '',
     incomeList: [],
     newAmount: '',
-    newDescription: ''
+    newDescription: '',
+    showForm: false,
+    buttonLeft: wx.getSystemInfoSync().windowWidth - 140,
+    buttonTop: wx.getSystemInfoSync().windowHeight - 300,
+    startX: 0,
+    startY: 0,
+    descriptionOptions: [
+      '王小明',
+      '张三',
+      '李四四',
+      '赵武',
+      '孙悟空',
+      '周杰伦',
+      '吴彦祖',
+      '郑大大',
+      '钱多多',
+      '陈奕迅',
+      '徐老师',
+      '马冬梅',
+      '胡一刀',
+      '林志玲',
+      '刘德华',
+      '黄老邪',
+      '杨过',
+      '朱八八',
+      '何仙姑',
+      '高富帅'
+    ],
+    selectedDescriptionIndex: -1,
+    showDescriptionSelect: false
   },
 
   onLoad() {
@@ -62,10 +91,11 @@ Page({
     })
   },
 
-  // 输入描述
-  bindDescriptionInput(e) {
+  // 选择描述
+  bindDescriptionChange(e) {
     this.setData({
-      newDescription: e.detail.value
+      selectedDescriptionIndex: Number(e.detail.value),
+      newDescription: this.data.descriptionOptions[Number(e.detail.value)]
     })
   },
 
@@ -74,6 +104,14 @@ Page({
     if (!this.data.newAmount) {
       wx.showToast({
         title: '请输入金额',
+        icon: 'none'
+      })
+      return
+    }
+
+    if (this.data.selectedDescriptionIndex === -1) {
+      wx.showToast({
+        title: '请选择描述',
         icon: 'none'
       })
       return
@@ -94,7 +132,7 @@ Page({
     const newIncome = {
       time,
       amount,
-      description: this.data.newDescription || '收入'
+      description: this.data.newDescription
     }
 
     const storageKey = `daily_income_${this.data.date}`
@@ -141,6 +179,76 @@ Page({
           })
         }
       }
+    })
+  },
+
+  showAddIncomeForm() {
+    this.setData({
+      showForm: !this.data.showForm,
+      newAmount: '',
+      newDescription: '',
+      selectedDescriptionIndex: -1
+    })
+  },
+
+  hideAddIncomeForm() {
+    this.setData({
+      showForm: false,
+      newAmount: '',
+      newDescription: '',
+      selectedDescriptionIndex: -1,
+      showDescriptionSelect: false
+    })
+  },
+
+  buttonTouchStart(e) {
+    this.setData({
+      startX: e.touches[0].clientX,
+      startY: e.touches[0].clientY
+    })
+  },
+
+  buttonTouchMove(e) {
+    const moveX = e.touches[0].clientX - this.data.startX
+    const moveY = e.touches[0].clientY - this.data.startY
+    
+    this.setData({
+      buttonLeft: this.data.buttonLeft + moveX,
+      buttonTop: this.data.buttonTop + moveY,
+      startX: e.touches[0].clientX,
+      startY: e.touches[0].clientY
+    })
+  },
+
+  buttonTouchEnd() {
+    // 确保按钮不会超出屏幕边界
+    const systemInfo = wx.getSystemInfoSync()
+    let { buttonLeft, buttonTop } = this.data
+    
+    if (buttonLeft < 0) buttonLeft = 0
+    if (buttonTop < 0) buttonTop = 0
+    if (buttonLeft > systemInfo.windowWidth - 100) buttonLeft = systemInfo.windowWidth - 100
+    if (buttonTop > systemInfo.windowHeight - 100) buttonTop = systemInfo.windowHeight - 100
+    
+    this.setData({ buttonLeft, buttonTop })
+  },
+
+  stopPropagation() {
+    // 阻止事件冒泡
+  },
+
+  toggleDescriptionSelect() {
+    this.setData({
+      showDescriptionSelect: !this.data.showDescriptionSelect
+    })
+  },
+
+  selectDescription(e) {
+    const index = e.currentTarget.dataset.index
+    this.setData({
+      selectedDescriptionIndex: index,
+      newDescription: this.data.descriptionOptions[index],
+      showDescriptionSelect: false
     })
   }
 }) 
