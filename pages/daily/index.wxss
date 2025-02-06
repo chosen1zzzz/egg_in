@@ -11,8 +11,8 @@
 }
 
 .header {
-  padding: 5rpx 0 0;
-  background: #fff;
+  padding: 5rpx 0 10rpx;
+  background: linear-gradient(135deg, #FFD6BE 0%, #FFBFB3 100%);
   width: 100%;
   box-sizing: border-box;
   position: fixed;
@@ -22,7 +22,7 @@
 }
 
 .date-picker {
-  background: #fff;
+  background: transparent;
   padding: 5rpx 40rpx 0;
   text-align: center;
   font-size: 32rpx;
@@ -35,40 +35,70 @@
 }
 
 .date-text {
-  background: #f5f5f5;
-  padding: 8rpx 30rpx;
+  background: rgba(0, 0, 0, 0.05);
+  padding: 12rpx 30rpx;
   border-radius: 30rpx;
   font-size: 32rpx;
   color: #333;
-  font-weight: bold;
-  min-width: 240rpx;
+  font-weight: 500;
+  min-width: 160rpx;
   text-align: center;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.05);
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+}
+
+.date-text::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 100%);
+  z-index: 1;
 }
 
 .income-card {
-  margin-top: 80rpx;
-  background: linear-gradient(135deg, #1AAD19 0%, #2DC62B 100%);
-  padding: 40rpx 40rpx;
-  color: #fff;
-  box-shadow: 0 4rpx 20rpx rgba(26, 173, 25, 0.2);
+  margin-top: 60rpx;
+  background: linear-gradient(135deg, #C2ECC4 0%, #A8E2AA 100%);
+  padding: 50rpx 40rpx;
+  color: #333;
+  box-shadow: 0 8rpx 24rpx rgba(0, 0, 0, 0.05);
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   width: 100%;
+  position: relative;
+  overflow: hidden;
+  border-radius: 20rpx 20rpx 0 0;
+}
+
+.income-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 100%);
+  z-index: 1;
 }
 
 .income-title {
   font-size: 32rpx;
-  opacity: 0.9;
-  margin-bottom: 20rpx;
+  opacity: 0.7;
+  margin-bottom: 30rpx;
 }
 
 .income-amount {
   font-size: 88rpx;
   font-weight: bold;
-  margin: 0;
+  margin: 10rpx 0;
   line-height: 1;
+  color: #333;
 }
 
 .input-form {
@@ -146,8 +176,8 @@
 }
 
 .income-list {
-  background: #fff;
-  padding: 30rpx 0 0 0;
+  background: linear-gradient(135deg, #F8F9FA 0%, #E9ECEF 100%);
+  padding: 0;
   margin-top: 0;
   width: 100%;
   box-sizing: border-box;
@@ -156,24 +186,34 @@
   flex: 1;
   position: relative;
   height: calc(100vh - 280rpx);
+  border-radius: 0;
 }
 
 .list-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 40rpx 20rpx 40rpx;
-  border-bottom: 1rpx solid #eee;
+  padding: 20rpx 40rpx;
   position: relative;
-  z-index: 2;
-  background: #fff;
-  margin-bottom: 15rpx;
+  background: linear-gradient(135deg, #F8F9FA 0%, #E9ECEF 100%);
+  border-radius: 0;
+}
+
+.list-scroll {
+  flex: 1;
+  width: 100%;
+  height: calc(100% - 80rpx);
+  box-sizing: border-box;
+}
+
+.list-content {
+  padding: 30rpx 0 0 0;
 }
 
 .list-title {
   font-size: 32rpx;
   color: #333;
-  font-weight: bold;
+  font-weight: 500;
 }
 
 .list-count {
@@ -181,15 +221,8 @@
   color: #999;
 }
 
-.list-scroll {
-  flex: 1;
-  position: absolute;
-  top: 70rpx;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: 100%;
-  z-index: 1;
+.income-item:first-child {
+  border-top: 1rpx solid rgba(0, 0, 0, 0.05);
 }
 
 .income-item {
@@ -197,16 +230,16 @@
   justify-content: space-between;
   align-items: center;
   padding: 20rpx 40rpx;
-  border-bottom: 1rpx solid #eee;
-  background: #fff;
+  border-bottom: 1rpx solid rgba(0, 0, 0, 0.03);
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
   transition: all 0.3s;
   width: 100%;
-  margin-top: 8rpx;
   box-sizing: border-box;
 }
 
 .income-item:active {
-  background: #f8f8f8;
+  background: rgba(255, 255, 255, 0.9);
 }
 
 .item-left {

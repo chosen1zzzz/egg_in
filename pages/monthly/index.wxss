@@ -14,7 +14,7 @@
 
 .header {
   padding: 40rpx 0 10rpx;
-  background: #fff;
+  background: transparent;
   width: 100%;
   box-sizing: border-box;
   position: fixed;
@@ -24,7 +24,7 @@
 }
 
 .date-picker {
-  background: #fff;
+  background: transparent;
   padding: 0 30rpx;
   text-align: center;
   font-size: 32rpx;
@@ -34,39 +34,67 @@
   justify-content: center;
   width: 100%;
   box-sizing: border-box;
+  gap: 8rpx;
 }
 
 .date-item {
-  background: #f5f5f5;
-  padding: 4rpx 16rpx;
+  background: linear-gradient(135deg, #FF6B6B 0%, #FF8E8E 100%);
+  padding: 12rpx 30rpx;
   border-radius: 30rpx;
   font-size: 32rpx;
-  color: #333;
-  font-weight: bold;
-  min-width: 180rpx;
+  color: #fff;
+  font-weight: 500;
+  min-width: 160rpx;
   text-align: center;
+  box-shadow: 0 4rpx 12rpx rgba(255, 107, 107, 0.25);
+  position: relative;
+  overflow: hidden;
+}
+
+.date-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 100%);
+  z-index: 1;
 }
 
 .date-text {
-  font-weight: bold;
+  font-weight: 500;
+  position: relative;
+  z-index: 2;
 }
 
 .date-range {
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 20rpx;
 }
 
 .date-number {
   font-size: 32rpx;
-  color: #333;
-  font-weight: bold;
+  color: #fff;
+  font-weight: 500;
+  position: relative;
+  z-index: 2;
 }
 
 .separator {
-  margin: 0 4rpx;
-  color: #666;
+  margin: 0;
+  padding: 0 4rpx;
+  color: #333;
   font-size: 28rpx;
+  position: relative;
+  z-index: 2;
+  font-weight: 400;
+  display: inline-block;
+  transform: scale(1);
+  opacity: 1;
+  line-height: 1;
 }
 
 .month-picker {
@@ -92,21 +120,37 @@
 
 .income-card {
   margin-top: 120rpx;
-  background: linear-gradient(135deg, #1AAD19 0%, #2DC62B 100%);
+  background: linear-gradient(135deg, #7F53AC 0%, #647DEE 100%);
   padding: 40rpx 40rpx 40rpx;
   color: #fff;
-  box-shadow: 0 4rpx 20rpx rgba(26, 173, 25, 0.2);
+  box-shadow: 0 8rpx 24rpx rgba(127, 83, 172, 0.25);
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   width: 100%;
+  position: relative;
+  overflow: hidden;
+  border-radius: 20rpx;
+}
+
+.income-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 100%);
+  z-index: 1;
 }
 
 .income-title {
   font-size: 32rpx;
   opacity: 0.9;
   margin-bottom: 20rpx;
+  position: relative;
+  z-index: 2;
 }
 
 .income-amount {
@@ -114,6 +158,8 @@
   font-weight: bold;
   margin: 0;
   line-height: 1;
+  position: relative;
+  z-index: 2;
 }
 
 .income-stats {
@@ -121,6 +167,8 @@
   padding-top: 20rpx;
   border-top: 2rpx solid rgba(255, 255, 255, 0.2);
   margin-top: 30rpx;
+  position: relative;
+  z-index: 2;
 }
 
 .stats-item {
