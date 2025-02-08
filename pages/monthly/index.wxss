@@ -38,17 +38,18 @@
 }
 
 .date-item {
-  background: linear-gradient(135deg, #FF6B6B 0%, #FF8E8E 100%);
+  background: rgba(0, 0, 0, 0.05);
   padding: 12rpx 30rpx;
   border-radius: 30rpx;
   font-size: 32rpx;
-  color: #fff;
+  color: #333;
   font-weight: 500;
   min-width: 160rpx;
   text-align: center;
-  box-shadow: 0 4rpx 12rpx rgba(255, 107, 107, 0.25);
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.05);
   position: relative;
   overflow: hidden;
+  backdrop-filter: blur(10px);
 }
 
 .date-item::before {
